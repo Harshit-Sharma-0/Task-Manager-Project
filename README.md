@@ -28,7 +28,8 @@ This is a **Task Manager** web application developed using **HTML**, **CSS**, an
    ```bash
    git clone https://github.com/Harshit-Sharma-0/Task-Manager-Project.git
 .
-   task-manager-project
+
+    task-manager-project
     ├── index.html
     ├── styles.css
     ├── my.js
