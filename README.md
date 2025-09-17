@@ -23,4 +23,12 @@ This is a **Task Manager** web application developed using **HTML**, **CSS**, an
 - Responsive design principles
 - Hands-on experience with project development during an internship
 
+
+🤝 Contributions
+
+This is a personal internship project, but feel free to fork, experiment, and improve it. Suggestions and feedback are welcome!
+
+📄 License
+
+This project is for learning purposes and is open for educational use. Feel free to adapt it for your own learning projects.
     
