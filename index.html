@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Task Manager with Progress Tracker</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <div class="container">
+    <header>
+      <div class="title">
+        <span class="emoji"></span>
+        Task Manager with Progress Tracker
+      </div>
+      <div class="clock" id="clock"></div>
+    </header>
+
+
+    <div class="grid">
+      <!-- Left: Task manager -->
+      <section class="card">
+        <div class="section">
+          <div class="toolbar">
+            <input id="search" type="search" placeholder="Search tasks..." />
+            <select id="filter-priority" aria-label="Filter by priority">
+              <option value="all">All priorities</option>
+              <option value="high">High</option>
+              <option value="medium">Medium</option>
+              <option value="low">Low</option>
+            </select>
+            <select id="sort-by" aria-label="Sort tasks">
+              <option value="created-desc">Newest</option>
+              <option value="created-asc">Oldest</option>
+              <option value="due-asc">Due date ↑</option>
+              <option value="due-desc">Due date ↓</option>
+              <option value="priority-desc">Priority (High→Low)</option>
+              <option value="priority-asc">Priority (Low→High)</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="section">
+          <div class="tabs" id="tabs">
+            <button class="tab active" data-tab="all">All</button>
+            <button class="tab" data-tab="active">Active</button>
+            <button class="tab" data-tab="completed">Completed</button>
+            <button class="tab" data-tab="overdue">Overdue</button>
+          </div>
+        </div>
+
+        <div class="section">
+          <form id="task-form" class="form">
+            <input id="title" type="text" placeholder="Task title *" required />
+            <select id="priority">
+              <option value="medium">Priority: Medium</option>
+              <option value="high">Priority: High</option>
+              <option value="low">Priority: Low</option>
+            </select>
+            <input id="due" type="date" />
+            <button type="submit" class="btn primary">Save Task</button>
+            <textarea id="description" placeholder="Description (optional)"></textarea>
+            <input type="hidden" id="task-id" />
+          </form>
+        </div>
+
+        <div class="section">
+          <div id="task-list" class="list" aria-live="polite"></div>
+          <div id="empty" class="empty" hidden>No tasks yet. Add your first task! 🎯</div>
+        </div>
+      </section>
+
+
+      <!-- Right: Stats -->
+      <aside class="card">
+        <div class="section">
+          <h3 style="margin:0 0 12px 0">Progress</h3>
+          <div class="stats">
+            <div class="stat-card">
+              <div class="progress" aria-label="Overall progress">
+                <div id="progress-bar"></div>
+              </div>
+              <div class="item-meta" style="margin-top:10px">
+                <span id="progress-label">0% complete</span>
+              </div>
+            </div>
+
+            <div class="stat-card" style="display:flex; align-items:center; justify-content:center">
+              <div class="donut" id="donut" aria-hidden="true"></div>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="section">
+          <div class="stats">
+            <div class="stat-card">
+              <div class="item-title">Total</div>
+              <div id="stat-total" class="item-title" style="font-size:24px; font-weight:800">0</div>
+            </div>
+            <div class="stat-card">
+              <div class="item-title">Completed</div>
+              <div id="stat-done" class="item-title" style="font-size:24px; font-weight:800">0</div>
+            </div>
+            <div class="stat-card">
+              <div class="item-title">Active</div>
+              <div id="stat-active" class="item-title" style="font-size:24px; font-weight:800">0</div>
+            </div>
+            <div class="stat-card">
+              <div class="item-title">Overdue</div>
+              <div id="stat-overdue" class="item-title overdue" style="font-size:24px; font-weight:800">0</div>
+            </div>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </div>
+
+  <template id="task-item">
+    <div class="item">
+      <label class="checkbox">
+        <input type="checkbox" />
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+          <path d="M20 6L9 17l-5-5" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </label>
+      <div class="item-main">
+        <div class="item-title"></div>
+        <div class="item-meta">
+          <span class="badge pr"></span>
+          <span class="due"></span>
+          <span class="created"></span>
+        </div>
+        <div class="desc" style="color:#c9cbe0; font-size:13px"></div>
+      </div>
+      <div class="item-actions">
+        <button class="icon-btn edit">Edit</button>
+        <button class="icon-btn delete">Delete</button>
+      </div>
+    </div>
+  </template>
+
+  <script src="my.js" defer></script>
+</body>
+</html>
